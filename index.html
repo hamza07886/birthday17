@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday ❤️</title>
+<style>
+    body {
+        text-align: center;
+        font-family: Arial;
+        background: black;
+        color: white;
+    }
+    #cake {
+        font-size: 100px;
+        margin-top: 50px;
+    }
+    #message {
+        display: none;
+        font-size: 24px;
+        margin-top: 20px;
+        color: pink;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 18px;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<h1 id="countdown"></h1>
+
+<div id="main" style="display:none;">
+    <div id="cake">🎂🕯️</div>
+    <p>Click to blow the candle</p>
+    <button onclick="blowCandle()">Blow Candle 🎤</button>
+    <div id="message">
+        <h2>Happy Birthday [Ni'mat] ❤️</h2>
+        <p>
+            Tum meri life ka sabse special part ho 💖<br>
+            Door hoke bhi tum hamesha paas ho 😊<br>
+            Wish you the happiest birthday 🎉
+        </p>
+    </div>
+</div>
+
+<script>
+// Set birthday date
+let birthday = new Date("2026-04-17 00:00:00").getTime();
+
+let x = setInterval(function() {
+    let now = new Date().getTime();
+    let distance = birthday - now;
+
+    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    document.getElementById("countdown").innerHTML =
+        "Countdown: " + days + " days";
+
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").style.display = "none";
+        document.getElementById("main").style.display = "block";
+    }
+}, 1000);
+
+function blowCandle() {
+    document.getElementById("cake").innerHTML = "🎂";
+    document.getElementById("message").style.display = "block";
+}
+</script>
+
+</body>
+</html>
